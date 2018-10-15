@@ -1,6 +1,8 @@
 package frames;
 
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.ImagingOpException;
 
 import javax.swing.*;
@@ -29,6 +31,7 @@ public class Menu {
 		glPanel.setImage("./img/menuBG.jpg");
 		GUI.glPanel=glPanel;
 		GUI.addToGlF(glPanel);
+		
 		AnimPanel p = new AnimPanel("C:\\Users\\leff0\\Downloads\\Telegram Desktop\\a");
 		p.setBounds(0, 0, 300, 300);
 		p.start();
@@ -37,8 +40,42 @@ public class Menu {
 		ImagePanel start = new ImagePanel();
 		start.setBackground(Color.RED);
 		start.setBounds(300, 300, 200, 100);
+		start.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				start.setBackground(Color.BLACK);
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				start.setBackground(Color.BLUE);
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				p.stop();
+				new GameFrame();
+				
+			}
+		});
 		GUI.addToGlP(start);
-		frameMenu.setVisible(true);
 		
+		frameMenu.setVisible(true);
+		GUI.setSize();
 	}
 }

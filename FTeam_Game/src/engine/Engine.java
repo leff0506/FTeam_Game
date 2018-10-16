@@ -4,8 +4,12 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JLabel;
+
 import gameobjects.Player;
 import guiintersaption.GUI;
+import imageWork.AnimLabel;
+
 
 
 
@@ -13,9 +17,11 @@ public class Engine {
 	public static boolean isRunning = true;
 	public static final int TARGET_FPS = 60;
 	public static final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
+	public static AnimLabel animL;
 	public static boolean[] keyboard = new boolean[500];
 	private Player player;
 	public Engine(Player player) {
+		initAnimatedLabel();
 		initDisplay(player);
 		
 		addKeyListener();
@@ -28,12 +34,21 @@ public class Engine {
 			}
 		});
 		engine.start();
+		
 	}
 	private void initDisplay(Player player) {
 		this.player=player;
 		Display display = new Display(player);
 		display.setBounds(0, 0, GUI.width-300, GUI.height);
 		GUI.addToGlP(display);
+	}
+	private void initAnimatedLabel() {
+		animL = new AnimLabel();
+		animL.setBounds(600, 300, 250, 100);
+		animL.setForeground(Color.RED);
+		
+		GUI.addToGlP(animL);
+		animL.setGlText("wfewfwefafaafddfavzcvasdfaaaasdddddd");
 	}
 	private void addKeyListener() {
 		for (boolean b : keyboard) {

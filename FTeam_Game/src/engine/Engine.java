@@ -15,7 +15,7 @@ import imageWork.AnimLabel;
 
 public class Engine {
 	public static boolean isRunning = true;
-	public static final int TARGET_FPS = 60;
+	public static final int TARGET_FPS = 20;
 	public static final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
 	public static AnimLabel animL;
 	public static boolean[] keyboard = new boolean[500];

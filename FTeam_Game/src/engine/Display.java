@@ -5,19 +5,19 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-
-import gameobjects.Player;
+import levels.Level;
+import players.Player;
 
 public class Display extends JPanel{
-	private Player player;
-	public Display(Player player) {
-		this.player= player;
+	private Level level;
+	public Display(Level level) {
+		this.level =level;
 	}
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		g.drawImage(player.getImg(), player.getX(), player.getY(), player.getWidth(), player.getHeight(), null);
+		g.drawImage(level.getPlayer().getImg(), level.getPlayer().getX(), level.getPlayer().getY(), level.getPlayer().getWidth(), level.getPlayer().getHeight(), null);
 		
 	}
 

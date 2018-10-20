@@ -6,23 +6,25 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JLabel;
 
-import gameobjects.Player;
 import guiintersaption.GUI;
 import imageWork.AnimLabel;
+import levels.Level;
+import players.Player;
 
 
 
 
 public class Engine {
 	public static boolean isRunning = true;
-	public static final int TARGET_FPS = 20;
+	public static final int TARGET_FPS = 60;
 	public static final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
 	public static AnimLabel animL;
 	public static boolean[] keyboard = new boolean[500];
-	private Player player;
-	public Engine(Player player) {
+	private Level level;
+	public Engine(Level level) {
+		GUI.clearGlP();
 		initAnimatedLabel();
-		initDisplay(player);
+		initDisplay(level);
 		
 		addKeyListener();
 		Thread engine = new Thread(new Runnable() {
@@ -36,10 +38,10 @@ public class Engine {
 		engine.start();
 		
 	}
-	private void initDisplay(Player player) {
-		this.player=player;
-		Display display = new Display(player);
-		display.setBounds(0, 0, GUI.width-300, GUI.height);
+	private void initDisplay(Level level) {
+		this.level=level;
+		Display display = new Display(level);
+		display.setBounds(0, 0, GUI.width, GUI.height);
 		GUI.addToGlP(display);
 	}
 	private void initAnimatedLabel() {
@@ -111,19 +113,7 @@ public class Engine {
 		}
 	}
 	private void update(long time){
-		if (keyboard[KeyEvent.VK_W]) {
-			player.setY((int) (player.getY()-Player.SPEED));
-		} 
-		if (keyboard[KeyEvent.VK_S]) {
-			player.setY((int) (player.getY()+Player.SPEED));
-		} 
-		if (keyboard[KeyEvent.VK_A]) {
-			player.setX((int) (player.getX()-Player.SPEED));
-		} 
-		if (keyboard[KeyEvent.VK_D]) {
-			player.setX((int) (player.getX()+Player.SPEED));
-		} else if (keyboard[KeyEvent.VK_ESCAPE]) {
-			System.exit(0);
-		}
+		level.update();
+		
 	}
 }

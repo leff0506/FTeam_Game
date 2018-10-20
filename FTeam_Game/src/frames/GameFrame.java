@@ -6,12 +6,13 @@ import engine.Engine;
 import gameobjects.Player;
 import guiintersaption.GUI;
 import imageWork.ImagePanel;
+import levels.MarsLevel;
 
 public class GameFrame {
 	private ImagePanel glPanel;
 	public GameFrame() {
 		init();
-		new Engine(new Player(50,50));
+		new Engine(new MarsLevel());
 	}
 	private void init() {
 		GUI.clearAll();

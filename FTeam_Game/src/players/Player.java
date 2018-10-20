@@ -1,5 +1,6 @@
 package players;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +14,7 @@ public abstract class Player{
 	private int x,y,width,height;
 	protected BufferedImage img;
 	
-	public static int SPEED = 10;
+	public static int SPEED = 3;
 
 	public int getX() {
 		return x;
@@ -66,5 +67,8 @@ public abstract class Player{
 	public void stopRight() {
 		// TODO Auto-generated method stub
 		
+	}
+	public Rectangle getBounds() {
+		return new Rectangle(x,y,width,height);
 	}
 }

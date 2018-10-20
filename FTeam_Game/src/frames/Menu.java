@@ -4,8 +4,12 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImagingOpException;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import guiintersaption.GUI;
@@ -14,6 +18,8 @@ import imageWork.ImagePanel;
 
 public class Menu {
 	public static JFrame frameMenu;
+	private BufferedImage bi1=null;
+	private BufferedImage bi = null;
 	private ImagePanel glPanel;
 	public Menu() {
 		init();
@@ -40,15 +46,33 @@ public class Menu {
 //		p.setBounds(0, 0, 300, 300);
 //		p.start();
 //		GUI.addToGlP(p);
-		JPanel wrapper  = new JPanel();
-		wrapper.setSize(300,400);
-		wrapper.setLocation(frameMenu.getWidth()/2-wrapper.getWidth()/2,frameMenu.getHeight()/2-wrapper.getHeight()/2);
-		wrapper.setBackground(Color.green);
+		ImagePanel wrapper  = new ImagePanel();
+		wrapper.setSize(300,350);
+		wrapper.setLocation(75,frameMenu.getHeight()/2-wrapper.getHeight()/2);
+		wrapper.setBackground(new Color(0,0,0,0));
 		wrapper.setLayout(null);
 		
+		
+		
+		try {
+			bi = ImageIO.read(new File("./img/menu/menitemdef.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			bi1 = ImageIO.read(new File("./img/menu/menitemen.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		ImagePanel start = new ImagePanel();
-		start.setBackground(Color.cyan);
-		start.setBounds(0, 0, wrapper.getWidth(), 80);
+		start.setBackground(new Color(0,0,0,0));
+		
+		start.setImage(bi);
+		
+		start.setBounds(0, 0, wrapper.getWidth(), 60);
 		start.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -66,13 +90,14 @@ public class Menu {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				start.setBackground(Color.BLACK);
+				start.setImage(bi);
+				frameMenu.repaint();
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				start.setBackground(Color.BLUE);
-				
+				start.setImage(bi1);
+				frameMenu.repaint();
 			}
 			
 			@Override
@@ -84,8 +109,9 @@ public class Menu {
 		});
 		wrapper.add(start);
 		ImagePanel con = new ImagePanel();
-		con.setBackground(Color.RED);
-		con.setBounds(0, 80, wrapper.getWidth(), 80);
+		con.setBackground(new Color(0,0,0,0));
+		con.setImage(start.getImage());
+		con.setBounds(0, 70, wrapper.getWidth(), 60);
 		con.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -103,13 +129,14 @@ public class Menu {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				con.setBackground(Color.BLACK);
+				con.setImage(bi);
+				frameMenu.repaint();
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				con.setBackground(Color.BLUE);
-				
+				con.setImage(bi1);
+				frameMenu.repaint();
 			}
 			
 			@Override
@@ -119,8 +146,9 @@ public class Menu {
 		});
 		wrapper.add(con);
 		ImagePanel sett = new ImagePanel();
-		sett.setBackground(Color.blue);
-		sett.setBounds(0,160 , wrapper.getWidth(), 80);
+		sett.setBackground(new Color(0,0,0,0));
+		sett.setImage(start.getImage());
+		sett.setBounds(0,140 , wrapper.getWidth(),60);
 		sett.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -138,13 +166,14 @@ public class Menu {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				sett.setBackground(Color.BLACK);
+				sett.setImage(bi);
+				frameMenu.repaint();
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				sett.setBackground(Color.BLUE);
-				
+				sett.setImage(bi1);
+				frameMenu.repaint();
 			}
 			
 			@Override
@@ -154,8 +183,9 @@ public class Menu {
 		});
 		wrapper.add(sett);
 		ImagePanel about = new ImagePanel();
-		about.setBackground(Color.DARK_GRAY);
-		about.setBounds(0,240 , wrapper.getWidth(), 80);
+		about.setBackground(new Color(0,0,0,0));
+		about.setImage(start.getImage());
+		about.setBounds(0,210 , wrapper.getWidth(), 60);
 		about.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -173,13 +203,14 @@ public class Menu {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				about.setBackground(Color.BLACK);
+				about.setImage(bi);
+				frameMenu.repaint();
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				about.setBackground(Color.BLUE);
-				
+				about.setImage(bi1);
+				frameMenu.repaint();
 			}
 			
 			@Override
@@ -189,8 +220,9 @@ public class Menu {
 		});
 		wrapper.add(about);
 		ImagePanel exit = new ImagePanel();
-		exit.setBackground(Color.LIGHT_GRAY);
-		exit.setBounds(0,320 , wrapper.getWidth(), 80);
+		exit.setBackground(new Color(0,0,0,0));
+		exit.setImage(start.getImage());
+		exit.setBounds(0,280 , wrapper.getWidth(), 60);
 		exit.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -208,13 +240,14 @@ public class Menu {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				exit.setBackground(Color.BLACK);
+				exit.setImage(bi);
+				frameMenu.repaint();
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				exit.setBackground(Color.BLUE);
-				
+				exit.setImage(bi1);
+				frameMenu.repaint();
 			}
 			
 			@Override

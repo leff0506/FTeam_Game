@@ -1,11 +1,18 @@
 package actors;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+
+import java.util.ArrayList;
+
+
 
 public class Actor {
 	private int x,y,width,height;
 	protected BufferedImage img;
-		
+	protected BufferedImage common;
+	protected ArrayList<BufferedImage> anim = new ArrayList<>();
+
 	public int getX() {
 		return x;
 	}
@@ -41,5 +48,11 @@ public class Actor {
 		setY(y);
 		setWidth(width);
 		setHeight(height);
+	}
+	public void update() {
+		
+	}
+	public Rectangle getBounds() {
+		return new Rectangle(x,y,width,height);
 	}
 }

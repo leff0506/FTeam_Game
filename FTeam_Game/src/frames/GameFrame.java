@@ -12,7 +12,7 @@ public class GameFrame {
 	private ImagePanel glPanel;
 	public GameFrame() {
 		init();
-		new Engine(new AstLevel());
+		new Engine(new MarsLevel());
 	}
 	private void init() {
 		GUI.clearAll();

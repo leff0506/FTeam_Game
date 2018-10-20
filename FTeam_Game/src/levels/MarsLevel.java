@@ -32,32 +32,6 @@ public class MarsLevel extends Level{
 		}
 		
 	}
-	private void addKeyListener() {
-		for (boolean b : Engine.keyboard) {
-			b = false;
-		}
-		GUI.glFrame.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				Engine.keyboard[e.getKeyCode()] = false;
-
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				Engine.keyboard[e.getKeyCode()] = true;
-
-			}
-		});
-
-	}
+	
 	
 }

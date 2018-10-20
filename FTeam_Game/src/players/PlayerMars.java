@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 public class PlayerMars extends Player{
 	public PlayerMars(int x,int y,int width,int height) {
 		try {
-			img = ImageIO.read(new File("./img/player.png"));
+			img = ImageIO.read(new File("./img/marsLevel/player.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

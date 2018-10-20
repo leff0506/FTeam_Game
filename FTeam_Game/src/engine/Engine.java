@@ -23,7 +23,7 @@ public class Engine {
 	private Level level;
 	public Engine(Level level) {
 		GUI.clearGlP();
-		initAnimatedLabel();
+//		initAnimatedLabel();
 		initDisplay(level);
 		
 		addKeyListener();

@@ -51,4 +51,20 @@ public abstract class Player{
 		setWidth(width);
 		setHeight(height);
 	}
+	public void left() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void right() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void stopLeft() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void stopRight() {
+		// TODO Auto-generated method stub
+		
+	}
 }

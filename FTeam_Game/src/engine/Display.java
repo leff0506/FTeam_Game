@@ -18,8 +18,9 @@ public class Display extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		drawField(g);
-		g.drawImage(level.getPlayer().getImg(), level.getPlayer().getX(), level.getPlayer().getY(), level.getPlayer().getWidth(), level.getPlayer().getHeight(), null);
 		drawActors(g);
+		g.drawImage(level.getPlayer().getImg(), level.getPlayer().getX(), level.getPlayer().getY(), level.getPlayer().getWidth(), level.getPlayer().getHeight(), null);
+		
 	}
 
 	private void drawField(Graphics g) {

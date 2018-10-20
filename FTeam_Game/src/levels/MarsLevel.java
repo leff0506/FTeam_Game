@@ -54,7 +54,76 @@ public class MarsLevel extends Level{
 		rightPressed=false;
 		upPressed=false;
 		downPressed=false;
-		if (Engine.keyboard[KeyEvent.VK_W]) {
+		if(Engine.keyboard[KeyEvent.VK_W]&&Engine.keyboard[KeyEvent.VK_D]) {
+			
+			for(Actor a:bg) {
+				a.setY(a.getY()+SPEED);
+				a.setX(a.getX()-SPEED);
+			}
+			for(Actor a:actors) {
+				a.setY(a.getY()+SPEED);
+				a.setX(a.getX()-SPEED);
+			}
+			player.upRight();
+			upPressed=true;
+			upWasPressed=true;
+			rightPressed=true;
+			rightWasPressed=true;
+
+			 
+		}
+		if(Engine.keyboard[KeyEvent.VK_S]&&Engine.keyboard[KeyEvent.VK_D]) {
+			
+			for(Actor a:bg) {
+				a.setY(a.getY()-SPEED);
+				a.setX(a.getX()-SPEED);
+			}
+			for(Actor a:actors) {
+				a.setY(a.getY()-SPEED);
+				a.setX(a.getX()-SPEED);
+			}
+			player.downRight();
+			downPressed=true;
+			downWasPressed=true;
+			rightPressed=true;
+			rightWasPressed=true;
+			
+		}
+		if(Engine.keyboard[KeyEvent.VK_S]&&Engine.keyboard[KeyEvent.VK_A]) {
+			
+			for(Actor a:bg) {
+				a.setY(a.getY()-SPEED);
+				a.setX(a.getX()+SPEED);
+			}
+			for(Actor a:actors) {
+				a.setY(a.getY()-SPEED);
+				a.setX(a.getX()+SPEED);
+			}
+			player.downLeft();
+			downPressed=true;
+			downWasPressed=true;
+			leftPressed=true;
+			leftWasPressed=true;
+			
+		}
+		if(Engine.keyboard[KeyEvent.VK_W]&&Engine.keyboard[KeyEvent.VK_A]) {
+			
+			for(Actor a:bg) {
+				a.setY(a.getY()+SPEED);
+				a.setX(a.getX()+SPEED);
+			}
+			for(Actor a:actors) {
+				a.setY(a.getY()+SPEED);
+				a.setX(a.getX()+SPEED);
+			}
+			player.upLeft();
+			upPressed=true;
+			upWasPressed=true;
+			leftPressed=true;
+			leftWasPressed=true;
+			
+		}
+		if (Engine.keyboard[KeyEvent.VK_W]&&!upPressed) {
 			for(Actor a:bg) {
 				a.setY(a.getY()+SPEED);
 			}
@@ -64,9 +133,9 @@ public class MarsLevel extends Level{
 			player.up();
 			upPressed=true;
 			upWasPressed=true;
-//			smthPressed=true;
+
 		} 
-		if (Engine.keyboard[KeyEvent.VK_S]) {
+		if (Engine.keyboard[KeyEvent.VK_S]&&!downPressed) {
 			for(Actor a:bg) {
 				a.setY(a.getY()-SPEED);
 			}
@@ -77,7 +146,7 @@ public class MarsLevel extends Level{
 			downWasPressed=true;
 			player.down();
 		} 
-		if (Engine.keyboard[KeyEvent.VK_A]) {
+		if (Engine.keyboard[KeyEvent.VK_A]&&!leftPressed) {
 			for(Actor a:bg) {
 				a.setX(a.getX()+SPEED);
 			}
@@ -88,7 +157,7 @@ public class MarsLevel extends Level{
 			leftPressed=true;
 			leftWasPressed=true;
 		}
-		if (Engine.keyboard[KeyEvent.VK_D]) {
+		if (Engine.keyboard[KeyEvent.VK_D]&&!rightPressed) {
 			for(Actor a:bg) {
 				a.setX(a.getX()-SPEED);
 			}
@@ -98,7 +167,8 @@ public class MarsLevel extends Level{
 			rightPressed=true;
 			rightWasPressed=true;
 			player.right();
-		} else if (Engine.keyboard[KeyEvent.VK_ESCAPE]) {
+		}
+		if (Engine.keyboard[KeyEvent.VK_ESCAPE]) {
 			System.exit(0);
 		}
 		if(!leftPressed&&leftWasPressed) {

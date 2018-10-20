@@ -68,6 +68,22 @@ public abstract class Player{
 	public void stopDown() {
 		
 	}
+	public void upRight() {
+		
+	}
+	public void stopUpRight() {
+		
+	}
+	public void downRight() {
+		
+	}
+	public void stopDownRight() {
+		
+	}
+	public void upLeft() {
+		
+	}
+	public void downLeft() {}
 	public void right() {
 		// TODO Auto-generated method stub
 		

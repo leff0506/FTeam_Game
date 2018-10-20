@@ -56,6 +56,18 @@ public abstract class Player{
 		// TODO Auto-generated method stub
 		
 	}
+	public void up() {
+		
+	}
+	public void stopUp() {
+		
+	}
+	public void down() {
+		
+	}
+	public void stopDown() {
+		
+	}
 	public void right() {
 		// TODO Auto-generated method stub
 		

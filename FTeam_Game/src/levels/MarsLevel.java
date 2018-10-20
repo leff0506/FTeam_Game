@@ -17,7 +17,14 @@ import players.PlayerMars;
 public class MarsLevel extends Level{
 	private static final int SPEED=2;
 	private ArrayList<Actor> toDelete=new ArrayList<>();
-	private boolean smthPressed;
+	private boolean leftPressed=false;
+	private boolean leftWasPressed=false;
+	private boolean rightPressed=false;
+	private boolean rightWasPressed=false;
+	private boolean upPressed=false;
+	private boolean upWasPressed=false;
+	private boolean downPressed=false;
+	private boolean downWasPressed=false;
 	public MarsLevel() {
 		player=new PlayerMars(0,0,GUI.width,GUI.height);
 		Actor bgA = new Actor();
@@ -43,7 +50,10 @@ public class MarsLevel extends Level{
 	@Override
 	public void update() {
 		if(!update) return;
-		smthPressed=false;
+		leftPressed=false;
+		rightPressed=false;
+		upPressed=false;
+		downPressed=false;
 		if (Engine.keyboard[KeyEvent.VK_W]) {
 			for(Actor a:bg) {
 				a.setY(a.getY()+SPEED);
@@ -51,7 +61,10 @@ public class MarsLevel extends Level{
 			for(Actor a:actors) {
 				a.setY(a.getY()+SPEED);
 			}
-			smthPressed=true;
+			player.up();
+			upPressed=true;
+			upWasPressed=true;
+//			smthPressed=true;
 		} 
 		if (Engine.keyboard[KeyEvent.VK_S]) {
 			for(Actor a:bg) {
@@ -60,7 +73,9 @@ public class MarsLevel extends Level{
 			for(Actor a:actors) {
 				a.setY(a.getY()-SPEED);
 			}
-			smthPressed=true;
+			downPressed=true;
+			downWasPressed=true;
+			player.down();
 		} 
 		if (Engine.keyboard[KeyEvent.VK_A]) {
 			for(Actor a:bg) {
@@ -70,7 +85,8 @@ public class MarsLevel extends Level{
 				a.setX(a.getX()+SPEED);
 			}
 			player.left();
-			smthPressed=true;
+			leftPressed=true;
+			leftWasPressed=true;
 		}
 		if (Engine.keyboard[KeyEvent.VK_D]) {
 			for(Actor a:bg) {
@@ -79,12 +95,27 @@ public class MarsLevel extends Level{
 			for(Actor a:actors) {
 				a.setX(a.getX()-SPEED);
 			}
-			smthPressed=true;
+			rightPressed=true;
+			rightWasPressed=true;
+			player.right();
 		} else if (Engine.keyboard[KeyEvent.VK_ESCAPE]) {
 			System.exit(0);
 		}
-		if(!smthPressed) {
+		if(!leftPressed&&leftWasPressed) {
 			player.stopLeft();
+			leftWasPressed=false;
+		}
+		if(!rightPressed&&rightWasPressed) {
+			player.stopRight();
+			rightWasPressed=false;
+		}
+		if(!upPressed&&upWasPressed) {
+			player.stopUp();
+			upWasPressed=false;
+		}
+		if(!downPressed&&downWasPressed) {
+			player.stopDown();
+			downWasPressed=false;
 		}
 		collision();
 

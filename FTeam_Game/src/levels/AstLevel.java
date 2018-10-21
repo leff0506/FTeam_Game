@@ -19,8 +19,10 @@ public class AstLevel extends Level{
 	private boolean smthPressed=false;
 	private double delt=0;
 	private static final int SPEEDMAP =1;
+	private Actor white;
 	public AstLevel() {
 		player=new PlayerAstr(20,GUI.height/2-25,200,115);
+		
 		Actor bgA = new Actor();
 		bgA.setBounds(0, 0, 1000, 800);
 		try {
@@ -42,6 +44,16 @@ public class AstLevel extends Level{
 		Asteroid temp3 = AstrFactory.get1();
 		temp3.setBounds(700, 100, 100, 100);
 		actors.add(temp3);
+		white = new Actor();
+		white.isWhite=true;
+		white.setBounds(-150,player.getY()-90, 600,300);
+		try {
+			white.setImg(ImageIO.read(new File("./img/astrLevel/white.png")));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		bg.add(white);
 		addKeyListener();
 	}
 	@Override
@@ -51,6 +63,7 @@ public class AstLevel extends Level{
 		if (Engine.keyboard[KeyEvent.VK_W]) {
 			player.setY((int) (player.getY()-Player.SPEED));
 			player.left();
+			
 			smthPressed=true;
 			if(player.getY()<0) {
 				player.setY(0);
@@ -72,6 +85,7 @@ public class AstLevel extends Level{
 			player.stopLeft();
 			player.stopRight();
 		}
+		white.setBounds(-150,player.getY()-90, 600,300);
 		collision();
 		updateMap();
 		updateActors();
@@ -92,7 +106,8 @@ public class AstLevel extends Level{
 	private void updateMap() {
 		delt+=0.02;
 		for(Actor a:bg) {
-			a.setX(a.getX()-(int)(delt)*SPEEDMAP);
+			
+			if(!a.isWhite)a.setX(a.getX()-(int)(delt)*SPEEDMAP);
 		}
 		if(delt>=1) {
 			delt=0;

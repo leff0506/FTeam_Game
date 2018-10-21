@@ -12,7 +12,7 @@ public class Actor {
 	protected BufferedImage img;
 	protected BufferedImage common;
 	protected ArrayList<BufferedImage> anim = new ArrayList<>();
-
+	public boolean isWhite = false;
 	public int getX() {
 		return x;
 	}

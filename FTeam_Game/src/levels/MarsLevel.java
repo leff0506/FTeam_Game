@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 import actors.Actor;
+import actors.Crator;
+import actors.MarsRover;
+import actors.Ship;
 import engine.Engine;
 import guiintersaption.GUI;
 import players.Player;
@@ -36,15 +39,29 @@ public class MarsLevel extends Level{
 			e.printStackTrace();
 		}
 		bg.add(bgA);
-		Actor temp = new Actor();
-		temp.setBounds(100, 100, 50, 50);
-		try {
-			temp.setImg(ImageIO.read(new File("./img/astrLevel/player/player.png")));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		MarsRover temp = new MarsRover();
+		temp.setBounds(0,0,100,100);
 		actors.add(temp);
+		Ship ship = new Ship();
+		ship.setBounds(300, 350, 300, 100);
+		actors.add(ship);
+		
+		Crator c1 = new Crator();
+		c1.setBounds(0, 500, 100, 100);
+		actors.add(c1);
+		
+		Crator c4 = new Crator();
+		c4.setBounds(700, 300, 100, 100);
+		actors.add(c4);
+		
+		Crator c3 = new Crator();
+		c3.setBounds(-50, -100, 100, 100);
+		actors.add(c3);
+		
+		Crator c2 = new Crator();
+		c2.setBounds(600, 700, 200, 200);
+		actors.add(c2);
+		
 		addKeyListener();
 	}
 	@Override
@@ -188,16 +205,52 @@ public class MarsLevel extends Level{
 			downWasPressed=false;
 		}
 		collision();
-
+		updateActors();
+	}
+	private void updateActors() {
+		for(Actor a : actors) {
+			a.update();
+		}
 	}
 	private void collision() {
 		toDelete.clear();
 		for(Actor a : actors) {
 			if(a.getBounds().intersects(player.getBounds())) {
-				toDelete.add(a);
+				if(upPressed) {
+					for(Actor a1:bg) {
+						a1.setY(a1.getY()-SPEED);
+					}
+					for(Actor a1:actors) {
+						a1.setY(a1.getY()-SPEED);
+					}
+				}
+				if(leftPressed) {
+					for(Actor a1:bg) {
+						a1.setX(a1.getX()-SPEED);
+					}
+					for(Actor a1:actors) {
+						a1.setX(a1.getX()-SPEED);
+					}
+				}
+				if(downPressed) {
+					for(Actor a1:bg) {
+						a1.setY(a1.getY()+SPEED);
+					}
+					for(Actor a1:actors) {
+						a1.setY(a1.getY()+SPEED);
+					}
+				}
+				if(rightPressed) {
+					for(Actor a1:bg) {
+						a1.setX(a1.getX()+SPEED);
+					}
+					for(Actor a1:actors) {
+						a1.setX(a1.getX()+SPEED);
+					}
+				}
 			}
 		}
-		actors.removeAll(toDelete);
+		
 	}
 	
 }

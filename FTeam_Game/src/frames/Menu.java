@@ -20,6 +20,16 @@ public class Menu {
 	public static JFrame frameMenu;
 	private BufferedImage bi1=null;
 	private BufferedImage bi = null;
+	private BufferedImage ci1=null;
+	private BufferedImage ci = null;
+	private BufferedImage ai1=null;
+	private BufferedImage ai = null;
+	private BufferedImage di1=null;
+	private BufferedImage di = null;
+	private BufferedImage ei1=null;
+	private BufferedImage ei = null;
+	private BufferedImage ri1=null;
+	private BufferedImage ri = null;
 	private ImagePanel glPanel;
 	public Menu() {
 		init();
@@ -27,10 +37,10 @@ public class Menu {
 	private void init() {
 		
 		frameMenu = new JFrame("FTeam_Game");
-		Toolkit kit = Toolkit.getDefaultToolkit();
 		
-		frameMenu.setSize(1000,600);
-		
+//		frameMenu.setSize(1000,600);
+		frameMenu.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frameMenu.setUndecorated(true);
 		frameMenu.setLocationRelativeTo(null);
 		frameMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameMenu.setResizable(false);
@@ -46,6 +56,7 @@ public class Menu {
 //		p.setBounds(0, 0, 300, 300);
 //		p.start();
 //		GUI.addToGlP(p);
+		frameMenu.setVisible(true);
 		ImagePanel wrapper  = new ImagePanel();
 		wrapper.setSize(300,350);
 		wrapper.setLocation(75,frameMenu.getHeight()/2-wrapper.getHeight()/2);
@@ -55,14 +66,66 @@ public class Menu {
 		
 		
 		try {
-			bi = ImageIO.read(new File("./img/menu/menitemdef.png"));
+			bi = ImageIO.read(new File("./img/menu/start1.png"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
 		try {
-			bi1 = ImageIO.read(new File("./img/menu/menitemen.png"));
+			bi1 = ImageIO.read(new File("./img/menu/start2.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			ai = ImageIO.read(new File("./img/menu/continue1.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			ai1 = ImageIO.read(new File("./img/menu/continue2.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			ci = ImageIO.read(new File("./img/menu/settings1.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			ci1 = ImageIO.read(new File("./img/menu/settings2.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			di = ImageIO.read(new File("./img/menu/about1.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			di1 = ImageIO.read(new File("./img/menu/about2.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			ei = ImageIO.read(new File("./img/menu/exit1.png"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			ei1 = ImageIO.read(new File("./img/menu/exit2.png"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -110,7 +173,7 @@ public class Menu {
 		wrapper.add(start);
 		ImagePanel con = new ImagePanel();
 		con.setBackground(new Color(0,0,0,0));
-		con.setImage(start.getImage());
+		con.setImage(ai);
 		con.setBounds(0, 70, wrapper.getWidth(), 60);
 		con.addMouseListener(new MouseListener() {
 			
@@ -129,13 +192,13 @@ public class Menu {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				con.setImage(bi);
+				con.setImage(ai);
 				frameMenu.repaint();
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				con.setImage(bi1);
+				con.setImage(ai1);
 				frameMenu.repaint();
 			}
 			
@@ -147,7 +210,7 @@ public class Menu {
 		wrapper.add(con);
 		ImagePanel sett = new ImagePanel();
 		sett.setBackground(new Color(0,0,0,0));
-		sett.setImage(start.getImage());
+		sett.setImage(ci);
 		sett.setBounds(0,140 , wrapper.getWidth(),60);
 		sett.addMouseListener(new MouseListener() {
 			
@@ -166,13 +229,13 @@ public class Menu {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				sett.setImage(bi);
+				sett.setImage(ci);
 				frameMenu.repaint();
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				sett.setImage(bi1);
+				sett.setImage(ci1);
 				frameMenu.repaint();
 			}
 			
@@ -184,7 +247,7 @@ public class Menu {
 		wrapper.add(sett);
 		ImagePanel about = new ImagePanel();
 		about.setBackground(new Color(0,0,0,0));
-		about.setImage(start.getImage());
+		about.setImage(di);
 		about.setBounds(0,210 , wrapper.getWidth(), 60);
 		about.addMouseListener(new MouseListener() {
 			
@@ -203,13 +266,13 @@ public class Menu {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				about.setImage(bi);
+				about.setImage(di);
 				frameMenu.repaint();
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				about.setImage(bi1);
+				about.setImage(di1);
 				frameMenu.repaint();
 			}
 			
@@ -221,7 +284,7 @@ public class Menu {
 		wrapper.add(about);
 		ImagePanel exit = new ImagePanel();
 		exit.setBackground(new Color(0,0,0,0));
-		exit.setImage(start.getImage());
+		exit.setImage(ei);
 		exit.setBounds(0,280 , wrapper.getWidth(), 60);
 		exit.addMouseListener(new MouseListener() {
 			
@@ -240,13 +303,13 @@ public class Menu {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				exit.setImage(bi);
+				exit.setImage(ei);
 				frameMenu.repaint();
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				exit.setImage(bi1);
+				exit.setImage(ei1);
 				frameMenu.repaint();
 			}
 			
@@ -258,7 +321,7 @@ public class Menu {
 		wrapper.add(exit);
 		GUI.addToGlP(wrapper);
 		
-		frameMenu.setVisible(true);
+		
 		GUI.setSize();
 	}
 }

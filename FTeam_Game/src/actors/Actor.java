@@ -13,6 +13,7 @@ public class Actor {
 	protected BufferedImage common;
 	protected ArrayList<BufferedImage> anim = new ArrayList<>();
 	public boolean isWhite = false;
+	public boolean isSaturn = false;
 	public int getX() {
 		return x;
 	}

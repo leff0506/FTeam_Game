@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import actors.Actor;
 import actors.Asteroid;
 import actors.AstrFactory;
+import actors.Saturn;
 import engine.Engine;
 import guiintersaption.GUI;
 import players.Player;
@@ -24,7 +25,7 @@ public class AstLevel extends Level{
 		player=new PlayerAstr(20,GUI.height/2-25,200,115);
 		
 		Actor bgA = new Actor();
-		bgA.setBounds(0, 0, 1000, 800);
+		bgA.setBounds(0, 0, 2000, GUI.height);
 		try {
 			bgA.setImg(ImageIO.read(new File("./img/astrLevel/bg/astbg.jpg")));
 		} catch (IOException e) {
@@ -54,6 +55,10 @@ public class AstLevel extends Level{
 			e.printStackTrace();
 		}
 		bg.add(white);
+		Saturn saturn = new Saturn();
+		
+		saturn.setBounds(1000, 0, GUI.height*3/4, GUI.height);
+		actors.add(saturn);
 		addKeyListener();
 	}
 	@Override

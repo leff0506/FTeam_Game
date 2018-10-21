@@ -33,7 +33,7 @@ public class MarsLevel extends Level{
 		Actor bgA = new Actor();
 		bgA.setBounds(-1000, -1000, 2000+GUI.width, 2000+GUI.height);
 		try {
-			bgA.setImg(ImageIO.read(new File("./img/marsLevel/bg/marsTex.jpg")));
+			bgA.setImg(ImageIO.read(new File("./img/marsLevel/bg/marsbg.png")));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,7 +43,7 @@ public class MarsLevel extends Level{
 		temp.setBounds(0,0,100,100);
 		actors.add(temp);
 		Ship ship = new Ship();
-		ship.setBounds(300, 350, 300, 100);
+		ship.setBounds(300, 350, 300, 131);
 		actors.add(ship);
 		
 		Crator c1 = new Crator();

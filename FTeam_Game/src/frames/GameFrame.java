@@ -6,6 +6,7 @@ import engine.Engine;
 import guiintersaption.GUI;
 import imageWork.ImagePanel;
 import levels.AstLevel;
+import levels.DispLevel;
 import levels.MarsLevel;
 
 public class GameFrame {
